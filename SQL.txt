@@ -4,3 +4,14 @@ Big Countries
 select name , population , area
 from  world 
 where area > 3000000 or population > 25000000
+
+
+Second Highest Salary
+
+
+SELECT Salary
+FROM Employee
+WHERE Salary IN 
+(SELECT Salary FROM Employee ORDER BY Salary DESC LIMIT 2 )  LIMIT 1 ; 
+
+### instead use (SELECT Salary FROM Employee ORDER BY Salary DESC LIMIT 2 )  OFFSET 1 , to remove first resullt of the row 
