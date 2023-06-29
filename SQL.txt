@@ -15,3 +15,15 @@ WHERE Salary IN
 (SELECT Salary FROM Employee ORDER BY Salary DESC LIMIT 2 )  LIMIT 1 ; 
 
 ### instead use (SELECT Salary FROM Employee ORDER BY Salary DESC LIMIT 2 )  OFFSET 1 , to remove first resullt of the row 
+
+Delete Duplicate emails
+
+
+delete from Person 
+where NOT Id in 
+( 
+    select MIN(Id) as id 
+    from Person
+    GROUP BY Email 
+);
+select * from Person
